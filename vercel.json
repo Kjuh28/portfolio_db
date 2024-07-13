@@ -1,18 +1,14 @@
-{ 
-  "versão" : 2, 
-  "compilações" : [ 
-    { 
-      "origem" : "server.js" , 
-      "uso" : "@vercel/node" , 
-      "config" : { 
-        "includeFiles" : [ "db.json" ] 
-      } 
-    } 
-  ], 
-  "rotas" : [ 
-    { 
-      "origem" : "/(.*)" , 
-      "dest" : "server.js"
-     } 
-  ] 
+{
+  "functions": {
+  "api/server.js": {
+    "memory": 1024,
+    "includeFiles": "db.json"
+  }
+},
+"rewrites": [
+  {
+    "source": "/(.*)",
+    "destination": "api/server.js"
+  }
+]
 }
