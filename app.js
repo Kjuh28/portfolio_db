@@ -14,6 +14,8 @@ const routes = require('./routes/router')
 
 app.use('/api', routes)
 
+const port = process.env.port || 3001
+
 app.listen(3000, function(){
     console.log('Servidor online')
 })
