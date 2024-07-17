@@ -1,0 +1,15 @@
+POST http://localhost:3000/api/projects
+Content-Type: application/json
+
+{
+    "name": "Delicia de Sabores",
+    "description" : "Projeto realizado para a confeitaria Delicia de Sabores, construido e estilizado com React + Vite + Tailwind.",
+    "git": "https://github.com/Kjuh28/DDSabores",
+    "img": "/src/assets/ddsabores.jpeg"
+}
+
+###
+GET http://localhost:3000/api/projects
+
+###
+GET http://localhost:3000/api/projects/66971295dc5f8f346bf6528b
