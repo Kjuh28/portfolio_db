@@ -13,3 +13,14 @@ GET http://localhost:3000/api/projects
 
 ###
 GET http://localhost:3000/api/projects/66971295dc5f8f346bf6528b
+
+###
+
+POST http://localhost:9001/api/abilities
+Content-Type:application/json
+
+{
+    "title": "Html",
+    "tagIcon": "<FaHtml5 />",
+    "description": "HTML (HyperText Markup Language) é a linguagem padrão usada para criar páginas da web, estruturando o conteúdo com tags e elementos."
+}

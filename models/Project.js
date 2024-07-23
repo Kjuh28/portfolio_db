@@ -9,15 +9,15 @@ const projectSchema = new Schema({
     },
     description: {
         type: String,
-        requied:true
+        required:true
     },
     git: {
         type: String,
-        requied:true
+        required:true
     },
     img: {
         type: String,
-        requied:true
+        required:true
     }
 }, {timestamps: true})
 
