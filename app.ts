@@ -1,5 +1,6 @@
 import fastify from "fastify";
 import {FastifyRequest, FastifyReply} from "fastify";
+import { dbConnection } from "./src/database/database_connection.js";
 
 const server = fastify()
 
@@ -15,4 +16,7 @@ server.listen({port: 9000}, (err, address) => {
 
     console.log(`Server listening at ${address}`)
 })
+
+//database connection
+server.register(dbConnection)
 
