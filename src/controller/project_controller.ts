@@ -39,3 +39,16 @@ export async function getProjectByTitle(req: FastifyRequest<{Params: BodyType}>,
     }
     
 }
+
+export async function getAllProjects(req: FastifyRequest, resp: FastifyReply){
+    const data = await Project.findAll()
+
+    try {
+        if(!data){
+            resp.send('Projetos não encontrados!')
+        }
+        resp.send(data)
+    } catch (error) {
+        resp.status(404).send('Not found!')
+    }
+}
