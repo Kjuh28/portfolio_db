@@ -13,7 +13,7 @@ server.get('/', async (req: FastifyRequest , resp: FastifyReply) => {
     return 'pong\n'
 })
 
-server.listen({port: portVar}, (err, address) => {
+server.listen({port: portVar, host: '0.0.0.0'}, (err, address) => {
     if(err){
         console.error(err)
         process.exit(1)
