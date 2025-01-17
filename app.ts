@@ -7,13 +7,14 @@ import 'dotenv/config'
 const server = fastify()
 
 const { PORT } = process.env
+const port = parseInt(PORT!, 10) || 9000
 
 
 server.get('/', async (req: FastifyRequest , resp: FastifyReply) => {
     return 'pong\n'
 })
 
-server.listen({path: PORT, port: 9000}, (err, address) => {
+server.listen({port: port}, (err, address) => {
     if(err){
         console.error(err)
         process.exit(1)
