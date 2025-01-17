@@ -6,9 +6,8 @@ import 'dotenv/config'
 
 const server = fastify()
 
-const { PORT } = process.env
-const portVar = parseInt(PORT!, 10) || 9000
-
+const portEnv = process.env.PORT ? parseInt(process.env.PORT, 10) : undefined
+const portVar = portEnv || 9000
 
 server.get('/', async (req: FastifyRequest , resp: FastifyReply) => {
     return 'pong\n'
