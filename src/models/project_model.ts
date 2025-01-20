@@ -9,6 +9,7 @@ class Project extends Model {
     declare git_link: string
     declare image: string
     declare index: number
+    declare page_link: string
     declare id_adm: string
 }
 
@@ -27,6 +28,10 @@ Project.init({
         allowNull: false
     },
     git_link: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    page_link: {
         type: DataTypes.STRING,
         allowNull: true
     },
