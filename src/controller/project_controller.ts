@@ -3,15 +3,20 @@ import Project from "../models/project_model.js";
 import { FastifyRequest, FastifyReply } from "fastify";
 
 export async function createProject(req: FastifyRequest<{Body: Project}> , resp: FastifyReply){
-    await Project.create({
-        id: randomUUID(),
-        id_adm: req.body.id_adm,
-        title: req.body.title,
-        description: req.body.description,
-        git_link: req.body.git_link,
-        page_link: req.body.page_link,
-        image: req.body.image,
-    })
+    try {
+        await Project.create({
+            id: randomUUID(),
+            id_adm: req.body.id_adm,
+            title: req.body.title,
+            description: req.body.description,
+            git_link: req.body.git_link,
+            page_link: req.body.page_link,
+            image: req.body.image,
+        })
+    } catch (error: any) {
+        resp.status(400).send(error.message)
+    }
+    
 }
 
 export async function getProjectByTitle(req: FastifyRequest<{Params: Project}>, resp: FastifyReply){
@@ -25,9 +30,8 @@ export async function getProjectByTitle(req: FastifyRequest<{Params: Project}>, 
         resp.send(data)
         console.log(data)
 
-    } catch (error) {
-        console.error(error)
-        resp.send(error)
+    } catch (error: any) {
+        resp.send(error.message)
     }
     
 }
@@ -40,14 +44,14 @@ export async function getAllProjects(req: FastifyRequest, resp: FastifyReply){
             resp.send('Projetos não encontrados!')
         }
         resp.send(data)
-    } catch (error) {
-        resp.status(404).send('Not found!')
+    } catch (error: any) {
+        resp.status(404).send(error.message)
     }
 }
     
 export async function editProject(req: FastifyRequest<{Body: Project, Params: Project}>, resp:FastifyReply){
     const projectId = req.params.id
-    const id_adm = req.params.id_adm
+    const idAdm = req.params.id_adm
 
     const data = await Project.findByPk(projectId)
 
@@ -63,7 +67,24 @@ export async function editProject(req: FastifyRequest<{Body: Project, Params: Pr
 
         await data?.save({fields: ['title', 'description', 'git_link', 'page_link' , 'image']})
 
-    } catch (error) {
-        resp.status(404).send('Pagina não encontrada!')
+    } catch (error: any) {
+        resp.status(404).send(error.message)
+    }
+}
+
+export async function deleteProject(req: FastifyRequest<{Params: Project}>, resp: FastifyReply){
+    const projectId = req.params.id
+
+    const data = await Project.findByPk(projectId)
+
+    try {
+        if(!data){
+            resp.send('Projeto não encontrado')
+        }
+        await Project.destroy({where: {id: projectId}})
+        resp.send('Projeto apagado com sucesso!')
+        
+    } catch (error: any) {
+        resp.send(error.message)
     }
 }
