@@ -1,14 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import Abilitie from "../models/abilitie_model";
+import Abilitie from "../models/abilitie_model.js";
 import { randomUUID } from "crypto";
-
-interface AbilitieTypes{
-    id: string,
-    id_adm: string,
-    title: string,
-    icon_link: string,
-    description: string
-}
 
 export async function createAbilitie(req: FastifyRequest<{Body: Abilitie}>, resp: FastifyReply){
     await Abilitie.create({
@@ -26,4 +18,8 @@ export async function getAllAbilities(req: FastifyRequest<{Body: Abilitie}>, res
         resp.status(404).send('Habilidades não encontradas!')
     }
     resp.send(data)
+}
+
+export async function editAbilitie(req: FastifyRequest<{Body: Abilitie, Params: Abilitie}>, resp: FastifyReply){
+
 }
