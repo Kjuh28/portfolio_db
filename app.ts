@@ -3,8 +3,11 @@ import {FastifyRequest, FastifyReply} from "fastify";
 import { dbConnection } from "./src/database/database_connection.js";
 import routers from "./src/routes/router.js";
 import 'dotenv/config'
+import cors from "@fastify/cors";
 
 const server = fastify()
+
+await server.register(cors)
 
 const portEnv = process.env.PORT ? parseInt(process.env.PORT, 10) : undefined
 const portVar = portEnv || 9000
