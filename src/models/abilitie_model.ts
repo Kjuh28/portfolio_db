@@ -1,4 +1,4 @@
-import { sequelizeDbConfig } from "../database/database_connection";
+import { sequelizeDbConfig } from "../database/database_connection.js";
 import { Model, DataTypes } from "sequelize";
 
 class Abilitie extends Model{
