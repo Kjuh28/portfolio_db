@@ -7,6 +7,7 @@ class Abilitie extends Model{
     declare title: string
     declare icon_link: string 
     declare description: string
+    declare icon_type: number
 }
 
 Abilitie.init({
@@ -33,6 +34,10 @@ Abilitie.init({
     },
     description:{
         type: DataTypes.STRING,
+        allowNull: false,
+    },
+    icon_type:{
+        type: DataTypes.INTEGER,
         allowNull: false,
     }
 },{

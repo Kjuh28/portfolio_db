@@ -9,7 +9,8 @@ export async function createAbilitie(req: FastifyRequest<{Body: Abilitie}>, resp
             id_adm: req.body.id_adm,
             title: req.body.title,
             icon_link: req.body.icon_link,
-            description: req.body.description
+            description: req.body.description,
+            icon_type: req.body.icon_type
         })
     } catch (error: any) {
         resp.status(400).send(error.message)
@@ -42,8 +43,9 @@ export async function editAbilitie(req: FastifyRequest<{Body: Abilitie, Params: 
         req.body.title ? (data!.title = req.body.title) : data?.dataValues.title
         req.body.icon_link ? (data!.icon_link = req.body.icon_link) : data?.dataValues.icon_link
         req.body.description ? (data!.description = req.body.description) : data?.dataValues.description
+        req.body.icon_type ? (data!.icon_type = req.body.icon_type) : data?.dataValues.icon_type
     
-        data?.save({fields: ['title', 'icon_link', 'description']})
+        data?.save({fields: ['title', 'icon_link', 'description', 'icon_type' ]})
     } catch (error: any) {
         resp.send(error.message)
     }
