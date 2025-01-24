@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node --watch dirt/app.js"
+    "start": "node --watch dist/app.js"
   },
   "author": "",
   "license": "ISC",
