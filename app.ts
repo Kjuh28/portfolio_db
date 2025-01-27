@@ -24,7 +24,9 @@ server.listen({port: portVar, host: '0.0.0.0'}, (err, address) => {
 
     console.log(`Server listening at ${address}`)
 })
-
+server.setNotFoundHandler((request, reply) => {
+    reply.status(404).send({ error: 'Not Found' });
+  });
 //database connection
 server.register(dbConnection)
 
