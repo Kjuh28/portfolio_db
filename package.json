@@ -2,7 +2,7 @@
   "name": "portfolio_db",
   "version": "2.0.0",
   "description": "\"New version of backend\"",
-  "main": "app.ts",
+  "main": "app.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
