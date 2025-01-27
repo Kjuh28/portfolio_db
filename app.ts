@@ -9,11 +9,6 @@ const server = fastify({
     logger:true,
 })
 
-export default async function handler(req: any, res: any) {
-    await server.ready()
-    server.server.emit('request', req, res)
-}
-
 server.register(cors)
 
 const portEnv = process.env.PORT ? parseInt(process.env.PORT, 10) : undefined
@@ -23,14 +18,18 @@ server.get('/', async (req: FastifyRequest , resp: FastifyReply) => {
     return 'pong\n'
 })
 
-server.listen({port: portVar, host: '0.0.0.0'}, (err, address) => {
-    if(err){
-        console.error(err)
-        process.exit(1)
-    }
+const start = async () => {
+    await server.listen({port: portVar, host: '0.0.0.0'}, (err, address) => {
+        if(err){
+            console.error(err)
+            process.exit(1)
+        }
+    
+        console.log(`Server listening at ${address}`)
+    })
+}
+start()
 
-    console.log(`Server listening at ${address}`)
-})
 //database connection
 server.register(dbConnection)
 
