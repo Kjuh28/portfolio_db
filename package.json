@@ -2,11 +2,11 @@
   "name": "portfolio_db",
   "version": "2.0.0",
   "description": "\"New version of backend\"",
-  "main": "app.ts",
+  "main": "app.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node --watch dist/app.js"
+    "start": "node dist/app.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
+    "@vercel/node": "^5.0.2",
     "typescript": "^5.7.3"
   }
 }
