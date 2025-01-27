@@ -5,7 +5,9 @@ import routers from "./src/routes/router.js";
 import 'dotenv/config'
 import cors from "@fastify/cors";
 
-const server = fastify()
+const server = fastify({
+    logger:true,
+})
 
 export default async function handler(req: any, res: any) {
     await server.ready()
