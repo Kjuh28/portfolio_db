@@ -7,7 +7,7 @@ import cors from "@fastify/cors";
 
 const server = fastify()
 
-await server.register(cors)
+server.register(cors)
 
 const portEnv = process.env.PORT ? parseInt(process.env.PORT, 10) : undefined
 const portVar = portEnv || 9000
