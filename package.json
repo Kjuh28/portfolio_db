@@ -16,6 +16,7 @@
     "fastify": "^5.2.1",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
+    "portfolio_db": "file:",
     "sequelize": "^6.37.5"
   },
   "devDependencies": {

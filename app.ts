@@ -13,7 +13,7 @@ const portEnv = process.env.PORT ? parseInt(process.env.PORT, 10) : undefined
 const portVar = portEnv || 9000
 
 server.get('/', async (req: FastifyRequest , resp: FastifyReply) => {
-    return 'pong\n'
+    return resp.status(200).type('application/json').send('testando a rota')
 })
 
 server.listen({port: portVar, host: '0.0.0.0'}, (err, address) => {
