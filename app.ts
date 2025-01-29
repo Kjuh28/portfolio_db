@@ -5,7 +5,7 @@ import routers from "./src/routes/router.js";
 import 'dotenv/config'
 import cors from "@fastify/cors";
 
-const server = fastify()
+const server = fastify({ logger: true})
 
 await server.register(cors)
 
@@ -16,15 +16,19 @@ server.get('/', async (req: FastifyRequest , resp: FastifyReply) => {
     return resp.status(200).type('application/json').send('testando a rota')
 })
 
-server.listen({port: portVar, host: '0.0.0.0'}, (err, address) => {
-    if(err){
-        console.error(err)
-        process.exit(1)
-    }
+// server.listen({port: portVar, host: '0.0.0.0'}, (err, address) => {
+//     if(err){
+//         console.error(err)
+//         process.exit(1)
+//     }
 
-    console.log(`Server listening at ${address}`)
-})
+//     console.log(`Server listening at ${address}`)
+// })
 
+export default async function handler(req: FastifyRequest , resp: FastifyReply) {
+    await server.ready()
+    server.server.emit('request', req, resp)
+}
 //database connection
 server.register(dbConnection)
 
