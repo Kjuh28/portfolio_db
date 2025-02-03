@@ -1,6 +1,6 @@
 import express from 'express'
-import { dbConnection } from "../src/database/database_connection.js";
-import routers from "../src/routes/router.js";
+import { dbConnection } from "./src/database/database_connection.js";
+import routers from "./src/routes/router.js";
 import 'dotenv/config'
 import cors from 'cors'
 import { Request, Response } from 'express';
@@ -17,13 +17,13 @@ app.get('/', (req: Request, resp: Response) => {
     resp.send('Testando a rota na vercel')
 });
 
+//routers definition
+app.use(routers);
+
 //database connection
-(async () =>{ 
+(async () => { 
     await dbConnection()
 })();
-
-//routers definition
-app.use(routers)
 
 //server function 
 app.listen({port: portVar}, (err: any) => {

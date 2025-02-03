@@ -7,7 +7,8 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "outDir": "dist"
+    "outDir": "public"
   },
-  "include": ["src/**/*", "api/index.ts"],
+  "include": ["src/**/*", "index.ts"],
+  "exclude": ["node_modules"]
 }
