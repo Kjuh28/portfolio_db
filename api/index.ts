@@ -26,12 +26,12 @@ app.get('/', (req: Request, resp: Response) => {
 app.use(routers)
 
 //server function 
-// app.listen({port: portVar}, (err: any) => {
-//     if (err){
-//         console.log(err)
-//     }
-//     console.log(`Server listening at ${portVar}`)
-// })
+app.listen({port: portVar}, (err: any) => {
+    if (err){
+        console.log(err)
+    }
+    console.log(`Server listening at ${portVar}`)
+})
 
 //serveless function
-export default app;
+// export default app;
