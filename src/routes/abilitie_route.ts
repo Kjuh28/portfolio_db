@@ -3,11 +3,11 @@ import { Router } from 'express'
 
 const abilitieRoute = Router()
 
-export default function AbilitieRouter(){
-    abilitieRoute.post('/abilities', createAbilitie)
-    abilitieRoute.get('/abilities', getAllAbilities)
-    abilitieRoute.post('/abilities/:id_adm/:id', editAbilitie)
-    abilitieRoute.delete('/abilities/:id', deleteAbilitie)
-}
+abilitieRoute.post('/abilities', createAbilitie)
+abilitieRoute.get('/abilities', getAllAbilities)
+abilitieRoute.post('/abilities/:id_adm/:id', editAbilitie)
+abilitieRoute.delete('/abilities/:id', deleteAbilitie)
+
+export default abilitieRoute
 
 
