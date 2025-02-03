@@ -31,5 +31,3 @@ app.listen({port: portVar}, (err: any) => {
     }
     console.log(`Server listening at ${portVar}`)
 })
-
-export default app;
