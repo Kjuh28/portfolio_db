@@ -24,7 +24,7 @@ app.get('/', (req, resp) => {
 //routers definition
 app.use(routers)
 
-
+//server function 
 app.listen({port: portVar}, (err: any) => {
     if (err){
         console.log(err)
