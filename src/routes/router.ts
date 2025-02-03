@@ -4,8 +4,8 @@ import { Router } from 'express'
 
 const routers = Router()
 
-routers.get('/api', projectRouter)
-routers.get('/api', AbilitieRouter)
+routers.use('/api', projectRouter)
+routers.use('/api', AbilitieRouter)
 
 export default routers
 
