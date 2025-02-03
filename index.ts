@@ -1,14 +1,19 @@
-import express from 'express'
+import express from "express"
 import { dbConnection } from "./src/database/database_connection.js";
 import routers from "./src/routes/router.js";
 import 'dotenv/config'
-import cors from 'cors'
-import { Request, Response } from 'express';
+import cors from "cors"
+import { Request, Response } from "express";
 
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+
+const corsOptions = {
+    origin: "*",
+    optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions))
 
 const portEnv = process.env.PORT
 const portVar = portEnv || 9000
