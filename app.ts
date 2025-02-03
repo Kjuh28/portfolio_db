@@ -1,34 +1,35 @@
-import fastify from "fastify";
-import {FastifyRequest, FastifyReply} from "fastify";
+import express from 'express'
 import { dbConnection } from "./src/database/database_connection.js";
 import routers from "./src/routes/router.js";
 import 'dotenv/config'
-import cors from "@fastify/cors";
+import cors from 'cors'
 
-const server = fastify()
+const app = express()
 
-await server.register(cors)
+app.use(express.json())
+app.use(cors())
 
 const portEnv = process.env.PORT ? parseInt(process.env.PORT, 10) : undefined
 const portVar = portEnv || 9000
 
-server.get('/', async (req: FastifyRequest , resp: FastifyReply) => {
-    return 'pong\n'
-})
-
-server.listen({port: portVar}, (err, address) => {
-    if(err){
-        console.error(err)
-        process.exit(1)
-    }
-
-    console.log(`Server listening at ${address}`)
-})
+app.get('/', (req, resp) => {
+    resp.send('Testando a rota na vercel')
+});
 
 //database connection
-server.register(dbConnection)
+(async () =>{ 
+    await dbConnection()
+})();
 
 //routers definition
-server.register(routers)
+app.use(routers)
+
+
+app.listen({port: portVar}, (err: any) => {
+    if (err){
+        console.log(err)
+    }
+    console.log(`Server listening at ${portVar}`)
+})
 
 

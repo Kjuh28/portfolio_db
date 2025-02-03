@@ -1,8 +1,8 @@
-import { randomUUID } from "node:crypto";
+import { randomUUID, UUID } from "node:crypto";
 import Project from "../models/project_model.js";
-import { FastifyRequest, FastifyReply } from "fastify";
+import {Request, Response } from 'express'
 
-export async function createProject(req: FastifyRequest<{Body: Project}> , resp: FastifyReply){
+export async function createProject(req: Request , resp: Response){
     try {
         await Project.create({
             id: randomUUID(),
@@ -19,7 +19,7 @@ export async function createProject(req: FastifyRequest<{Body: Project}> , resp:
     
 }
 
-export async function getProjectByTitle(req: FastifyRequest<{Params: Project}>, resp: FastifyReply){
+export async function getProjectByTitle(req: Request, resp: Response){
     const findByTitle = req.params.title
     const data = await Project.findOne({where: { title: findByTitle}});
     
@@ -36,7 +36,7 @@ export async function getProjectByTitle(req: FastifyRequest<{Params: Project}>, 
     
 }
 
-export async function getAllProjects(req: FastifyRequest, resp: FastifyReply){
+export async function getAllProjects(req: Request, resp: Response){
     const data = await Project.findAll()
 
     try {
@@ -49,7 +49,7 @@ export async function getAllProjects(req: FastifyRequest, resp: FastifyReply){
     }
 }
     
-export async function editProject(req: FastifyRequest<{Body: Project, Params: Project}>, resp:FastifyReply){
+export async function editProject(req: Request, resp: Response){
     const projectId = req.params.id
     const idAdm = req.params.id_adm
 
@@ -72,7 +72,7 @@ export async function editProject(req: FastifyRequest<{Body: Project, Params: Pr
     }
 }
 
-export async function deleteProject(req: FastifyRequest<{Params: Project}>, resp: FastifyReply){
+export async function deleteProject(req: Request, resp: Response){
     const projectId = req.params.id
 
     const data = await Project.findByPk(projectId)

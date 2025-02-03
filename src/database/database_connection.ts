@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize'
 import 'dotenv/config'
-const pg = require('pg')
+import pg from 'pg'
 const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env
 
 export const sequelizeDbConfig = new Sequelize(
