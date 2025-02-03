@@ -1,8 +1,8 @@
-import { FastifyRequest, FastifyReply } from "fastify";
+import {Request, Response } from 'express'
 import Abilitie from "../models/abilitie_model.js";
 import { randomUUID } from "crypto";
 
-export async function createAbilitie(req: FastifyRequest<{Body: Abilitie}>, resp: FastifyReply){
+export async function createAbilitie(req: Request, resp: Response){
     try {
         await Abilitie.create({
             id: randomUUID(),
@@ -17,7 +17,7 @@ export async function createAbilitie(req: FastifyRequest<{Body: Abilitie}>, resp
     }
 }
 
-export async function getAllAbilities(req: FastifyRequest<{Body: Abilitie}>, resp: FastifyReply){
+export async function getAllAbilities(req: Request, resp: Response){
     const data = await Abilitie.findAll()
     try {
         if(!data){
@@ -30,7 +30,7 @@ export async function getAllAbilities(req: FastifyRequest<{Body: Abilitie}>, res
     
 }
 
-export async function editAbilitie(req: FastifyRequest<{Body: Abilitie, Params: Abilitie}>, resp: FastifyReply){
+export async function editAbilitie(req: Request, resp: Response){
     const abilitieId = req.params.id
     const idAdm = req.params.id_adm
 
@@ -52,7 +52,7 @@ export async function editAbilitie(req: FastifyRequest<{Body: Abilitie, Params: 
     
 }
 
-export async function deleteAbilitie(req: FastifyRequest<{Params: Abilitie}>, resp: FastifyReply){
+export async function deleteAbilitie(req: Request, resp: Response){
     const projectId = req.params.id
 
     const data = await Abilitie.findByPk(projectId)

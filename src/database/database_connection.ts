@@ -1,11 +1,12 @@
 import { Sequelize } from 'sequelize'
 import 'dotenv/config'
-
+import pg from 'pg'
 const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env
 
 export const sequelizeDbConfig = new Sequelize(
     PGDATABASE!, PGUSER!, PGPASSWORD, {
         dialect: 'postgres',
+        dialectModule: pg,
         host: PGHOST,
         dialectOptions: {
             ssl: true
