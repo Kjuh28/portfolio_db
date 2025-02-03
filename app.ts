@@ -9,7 +9,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const portEnv = process.env.PORT ? parseInt(process.env.PORT, 10) : undefined
+const portEnv = process.env.PORT
 const portVar = portEnv || 9000
 
 app.get('/', (req, resp) => {
@@ -32,4 +32,4 @@ app.listen({port: portVar}, (err: any) => {
     console.log(`Server listening at ${portVar}`)
 })
 
-
+export default app;
