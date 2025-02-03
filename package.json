@@ -2,11 +2,11 @@
   "name": "portfolio_db",
   "version": "2.0.0",
   "description": "\"New version of backend\"",
-  "main": "app.js",
+  "main": "api/index.ts",
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/api/index.js"
   },
   "author": "",
   "license": "ISC",

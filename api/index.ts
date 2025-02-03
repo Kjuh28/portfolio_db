@@ -1,6 +1,6 @@
 import express from 'express'
-import { dbConnection } from "./src/database/database_connection.js";
-import routers from "./src/routes/router.js";
+import { dbConnection } from "../src/database/database_connection.js";
+import routers from "../src/routes/router.js";
 import 'dotenv/config'
 import cors from 'cors'
 
