@@ -10,10 +10,11 @@ const app = express()
 app.use(express.json())
 
 const corsOptions = {
-    origin: "*",
+    origin: 'https://kerleysousa.dev',
     optionsSuccessStatus: 200
 }
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 const portEnv = process.env.PORT
 const portVar = portEnv || 9000
