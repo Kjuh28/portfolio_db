@@ -13,7 +13,7 @@ app.use(express.json())
 const portEnv = process.env.PORT
 const portVar = portEnv || 9000
 
-app.get('/', (req: Request, resp: Response) => {
+app.get('/', cors(), (req: Request, resp: Response) => {
     resp.send('Testando a rota na vercel')
 });
 
@@ -26,10 +26,7 @@ app.use(routers);
 })();
 
 //server function 
-app.listen({port: portVar}, (err: any) => {
-    if (err){
-        console.log(err)
-    }
+app.listen({port: portVar}, () => {
     console.log(`Server listening at ${portVar}`)
 })
 
