@@ -7,8 +7,8 @@ import { Request, Response } from 'express';
 
 const app = express()
 
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
 
 const portEnv = process.env.PORT
 const portVar = portEnv || 9000
