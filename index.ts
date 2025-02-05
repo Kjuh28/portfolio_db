@@ -7,14 +7,8 @@ import { Request, Response } from "express";
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
-
-const corsOptions = {
-    origin: 'https://kerleysousa.dev',
-    optionsSuccessStatus: 200
-}
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
 
 const portEnv = process.env.PORT
 const portVar = portEnv || 9000
@@ -32,10 +26,7 @@ app.use(routers);
 })();
 
 //server function 
-app.listen({port: portVar}, (err: any) => {
-    if (err){
-        console.log(err)
-    }
+app.listen({port: portVar}, () => {
     console.log(`Server listening at ${portVar}`)
 })
 
