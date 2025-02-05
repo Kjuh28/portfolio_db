@@ -13,7 +13,7 @@ app.use(express.json())
 const portEnv = process.env.PORT
 const portVar = portEnv || 9000
 
-app.get('/', cors(), (req: Request, resp: Response) => {
+app.get('/', (req: Request, resp: Response) => {
     resp.send('Testando a rota na vercel')
 });
 
