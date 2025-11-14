@@ -7,7 +7,7 @@ class Project extends Model {
     declare title: string
     declare description: string
     declare summary: string
-    declare tecnologies: string
+    declare technologies: string
     declare git_link: string
     declare image: string
     declare index: number
@@ -33,7 +33,7 @@ Project.init({
         type: DataTypes.STRING,
         allowNull: true
     },
-    tecnologies: {
+    technologies: {
         type: DataTypes.STRING,
         allowNull: true
     },
