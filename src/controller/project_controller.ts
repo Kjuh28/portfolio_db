@@ -14,6 +14,7 @@ export async function createProject(req: Request , resp: Response){
             git_link: req.body.git_link,
             page_link: req.body.page_link,
             image: req.body.image,
+            slides: req.body.slides,
         })
     } catch (error: any) {
         resp.status(400).send(error.message)
@@ -68,8 +69,9 @@ export async function editProject(req: Request, resp: Response){
         req.body.page_link ? (data!.page_link = req.body.page_link) : req.body.page_link
         req.body.summary ? (data!.summary = req.body.summary) : req.body.summary
         req.body.technologies ? (data!.technologies = req.body.technologies) : req.body.technologies
+        req.body.slides ? (data!.slides = req.body.slides) : req.body.slides
 
-        await data?.save({fields: ['title', 'description', 'git_link', 'page_link' , 'image', 'summary', 'technologies']})
+        await data?.save({fields: ['title', 'description', 'git_link', 'page_link' , 'image', 'summary', 'technologies', 'slides']})
 
     } catch (error: any) {
         resp.status(404).send(error.message)

@@ -7,12 +7,13 @@ class Project extends Model {
     declare title: string
     declare description: string
     declare summary: string
-    declare technologies: string
+    declare technologies: Array<string>
     declare git_link: string
     declare image: string
     declare index: number
     declare page_link: string
     declare id_adm: string
+    declare slides: Array<string>
 }
 
 Project.init({
@@ -34,7 +35,7 @@ Project.init({
         allowNull: true
     },
     technologies: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true
     },
     git_link: {
@@ -48,6 +49,10 @@ Project.init({
     image: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    slides: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: true
     },
     index: {
         type: DataTypes.NUMBER,
